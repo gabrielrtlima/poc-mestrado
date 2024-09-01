@@ -1,0 +1,217 @@
+{
+  ".": {
+    "setup.py": {
+      "functions": {}
+    }
+  },
+  "./src": {
+    "__main__.py": {
+      "functions": {}
+    }
+  },
+  "./src/pydocgen": {
+    "documentation_generator.py": {
+      "functions": {
+        "generate_documentation": {
+          "params": {
+            "functions": {
+              "field": "functions",
+              "type": null,
+              "default": null
+            },
+            "output_file": {
+              "field": "output_file",
+              "type": null,
+              "default": null
+            }
+          },
+          "return_type": null,
+          "description": "A fun\u00e7\u00e3o `generate_documentation` gera documenta\u00e7\u00e3o JSON para um conjunto de fun\u00e7\u00f5es. Ela utiliza a biblioteca `json` para serializar os dados em formato JSON e escrever no arquivo especificado por `output_file`.",
+          "example": "`generate_documentation(functions={\"hello\": \"prints 'Hello, World!'\"}, output_file=\"documentation.json\")`",
+          "line_number": 4,
+          "num_lines": 3,
+          "calls": 1,
+          "called_in": [
+            "./src/pydocgen/cli.py"
+          ]
+        }
+      }
+    },
+    "llm_integration.py": {
+      "functions": {
+        "generate_function_info": {
+          "params": {
+            "function_code": {
+              "field": "function_code",
+              "type": null,
+              "default": null
+            },
+            "function_name": {
+              "field": "function_name",
+              "type": null,
+              "default": null
+            },
+            "params": {
+              "field": "params",
+              "type": null,
+              "default": null
+            },
+            "return_type": {
+              "field": "return_type",
+              "type": null,
+              "default": null
+            }
+          },
+          "return_type": null,
+          "description": "Aqui est\u00e1 uma descri\u00e7\u00e3o concisa da fun\u00e7\u00e3o `generate_function_info` e um exemplo de uso:\n\n**Descri\u00e7\u00e3o**: A fun\u00e7\u00e3o `generate_function_info` gera informa\u00e7\u00f5es sobre uma fun\u00e7\u00e3o Python, incluindo uma descri\u00e7\u00e3o concisa do seu prop\u00f3sito e um exemplo de uso. Ela utiliza um modelo de linguagem avan\u00e7ada (LLM) para obter a resposta.\n\n**",
+          "example": "**\n\nSuponha que voc\u00ea tenha uma fun\u00e7\u00e3o Python chamada `soma` com o seguinte c\u00f3digo:\n```python\ndef soma(a, b):\n    return a + b\n```\nVoc\u00ea pode chamar a fun\u00e7\u00e3o `generate_function_info` passando os par\u00e2metros necess\u00e1rios:\n```python\nfunction_code = \"\"\"\ndef soma(a, b):\n    return a + b\n\"\"\"\nfunction_name = \"soma\"\nparams = {\"a\": int, \"b\": int}\nreturn_type = \"int\"\n\ndescription, example = generate_function_info(function_code, function_name, params, return_type)\n\nprint(description)\nprint(example)\n```\nIsso gerar\u00e1 uma resposta como a seguinte:\n```python\nDescri\u00e7\u00e3o: A fun\u00e7\u00e3o soma recebe dois n\u00fameros inteiros e retorna o seu somat\u00f3rio.",
+          "line_number": 7,
+          "num_lines": 45,
+          "calls": 1,
+          "called_in": [
+            "./src/pydocgen/function_analyzer.py"
+          ]
+        }
+      }
+    },
+    "function_analyzer.py": {
+      "functions": {
+        "get_type_hint": {
+          "params": {
+            "annotation": {
+              "field": "annotation",
+              "type": null,
+              "default": null
+            }
+          },
+          "return_type": null,
+          "description": "A fun\u00e7\u00e3o `get_type_hint` analisa um anota\u00e7\u00e3o (annotation) no formato de \u00e1rvore de sintaxe abstrata (AST) para extrair informa\u00e7\u00f5es sobre o tipo de dados. Ela pode lidar com tipos simples, como str ou int, bem como subscritos de listas.",
+          "example": "Chamando a fun\u00e7\u00e3o get_type_hint com um exemplo de anota\u00e7\u00e3o:\n\n```python\nimport ast\n\nannotation = ast.parse(\"my_list: List[int]\", mode=\"eval\").body[0].value.type  # <--- Anota\u00e7\u00e3o para extrair informa\u00e7\u00f5es sobre o tipo de dados\nprint(get_type_hint(annotation))  # Output: List[int]\n```",
+          "line_number": 6,
+          "num_lines": 8,
+          "calls": 3,
+          "called_in": [
+            "./src/pydocgen/function_analyzer.py"
+          ]
+        },
+        "get_default_value": {
+          "params": {
+            "default": {
+              "field": "default",
+              "type": null,
+              "default": null
+            }
+          },
+          "return_type": null,
+          "description": "A fun\u00e7\u00e3o `get_default_value` analisa um valor de default fornecido como par\u00e2metro, o qual pode ser uma constante, uma lista, um dicion\u00e1rio, um nome (refer\u00eancia a uma vari\u00e1vel) ou chamada de uma fun\u00e7\u00e3o e retorna seu valor correspondente.",
+          "example": "Chamando `get_default_value(default=ast.Constant(value=\"default\"))` retornar\u00e1 `\"default\"`.",
+          "line_number": 16,
+          "num_lines": 15,
+          "calls": 4,
+          "called_in": [
+            "./src/pydocgen/function_analyzer.py"
+          ]
+        },
+        "analyze_functions": {
+          "params": {
+            "python_files": {
+              "field": "python_files",
+              "type": null,
+              "default": null
+            }
+          },
+          "return_type": null,
+          "description": "A fun\u00e7\u00e3o `analyze_functions` analisa as fun\u00e7\u00f5es em um conjunto de arquivos Python, coletando informa\u00e7\u00f5es sobre elas como par\u00e2metros, tipo de retorno e chamadas. Ela l\u00ea os arquivos, extrai as defini\u00e7\u00f5es de fun\u00e7\u00e3o, conta as chamadas delas e atualiza as informa\u00e7\u00f5es de chamada nas defini\u00e7\u00f5es.",
+          "example": "`analyze_functions([\"/path/to/file1.py\", \"/path/to/file2.py\"])`",
+          "line_number": 47,
+          "num_lines": 96,
+          "calls": 1,
+          "called_in": [
+            "./src/pydocgen/cli.py"
+          ]
+        },
+        "__init__": {
+          "params": {
+            "self": {
+              "field": "self",
+              "type": null,
+              "default": null
+            }
+          },
+          "return_type": null,
+          "description": "A fun\u00e7\u00e3o `__init__` \u00e9 um m\u00e9todo especial em Python chamado automaticamente quando uma classe \u00e9 instanciada. Ela \u00e9 usada para inicializar os atributos da classe e \u00e9 chamada assim que a classe \u00e9 criada. Nesse caso, a fun\u00e7\u00e3o `__init__` cria um dicion\u00e1rio vazio chamado `function_calls` dentro do objeto atual.",
+          "example": "O exemplo de uso dessa fun\u00e7\u00e3o seria criar uma inst\u00e2ncia da classe onde essa fun\u00e7\u00e3o est\u00e1 definida. Por exemplo:\n```python\nclass MeuObjeto:\n    def __init__(self):\n        self.function_calls = {}\n\nmeu_objeto = MeuObjeto()\nprint(meu_objeto.function_calls)  # Sa\u00edda: {}\n```\nNesse exemplo, `meu_objeto` \u00e9 uma inst\u00e2ncia da classe `MeuObjeto`, e a fun\u00e7\u00e3o `__init__` \u00e9 chamada assim que ela \u00e9 criada. Como resultado, o dicion\u00e1rio `function_calls` \u00e9 criado dentro do objeto `meu_objeto`.",
+          "line_number": 34,
+          "num_lines": 2,
+          "calls": 0,
+          "called_in": []
+        },
+        "visit_Call": {
+          "params": {
+            "self": {
+              "field": "self",
+              "type": null,
+              "default": null
+            },
+            "node": {
+              "field": "node",
+              "type": null,
+              "default": null
+            }
+          },
+          "return_type": null,
+          "description": "A fun\u00e7\u00e3o `visit_Call` \u00e9 utilizada para contar as chamadas de fun\u00e7\u00f5es em um c\u00f3digo Python. Ela recebe como par\u00e2metro um n\u00f3 de chamada (node) e incrementa a contagem de chamadas da fun\u00e7\u00e3o correspondente no dicion\u00e1rio `self.function_calls`.",
+          "example": "```python\nfrom ast import NodeVisitor, Call\n\nclass FuncCallCounter(NodeVisitor):\n    def __init__(self):\n        self.function_calls = {}\n\n    def visit_Call(self, node):\n        # implementa\u00e7\u00e3o da fun\u00e7\u00e3o visit_Call aqui\n\n# instanciar a classe e chamar a fun\u00e7\u00e3o visit_Call com um exemplo de n\u00f3 de chamada\nfunc_call_counter = FuncCallCounter()\nnode = Call(func=Name(id='print'), args=[], keywords=[])\nfunc_call_counter.visit(node)\n\n# printar o n\u00famero de chamadas da fun\u00e7\u00e3o 'print'\nprint(func_call_counter.function_calls['print'])  # sa\u00edda: 1\n```",
+          "line_number": 37,
+          "num_lines": 8,
+          "calls": 0,
+          "called_in": []
+        }
+      }
+    },
+    "cli.py": {
+      "functions": {
+        "main": {
+          "params": {},
+          "return_type": null,
+          "description": "Essa fun\u00e7\u00e3o gera documenta\u00e7\u00e3o em formato JSON para as fun\u00e7\u00f5es de um projeto Python. Ela leva em conta o caminho do projeto, onde est\u00e3o os arquivos Python, o arquivo de sa\u00edda e pastas a serem ignoradas. A documenta\u00e7\u00e3o \u00e9 gerada por meio da an\u00e1lise das fun\u00e7\u00f5es presentes nos arquivos Python do projeto.",
+          "example": "main(project_path=\"/home/user/projetos/my_project\", output_file=\"documentacao.json\", ignore=[])",
+          "line_number": 7,
+          "num_lines": 18,
+          "calls": 2,
+          "called_in": [
+            "./src/__main__.py",
+            "./src/pydocgen/cli.py"
+          ]
+        }
+      }
+    },
+    "file_traverser.py": {
+      "functions": {
+        "traverse_files": {
+          "params": {
+            "project_path": {
+              "field": "project_path",
+              "type": "str",
+              "default": "test"
+            },
+            "ignore_dirs": {
+              "field": "ignore_dirs",
+              "type": null,
+              "default": null
+            }
+          },
+          "return_type": "list[str]",
+          "description": "A fun\u00e7\u00e3o `traverse_files` percorre um diret\u00f3rio especificado em busca de arquivos Python (.py). Ela ignora os subdiret\u00f3rios definidos e retornar\u00e1 uma lista com os caminhos absolutos dos arquivos encontrados.",
+          "example": "Chamando a fun\u00e7\u00e3o com o diret\u00f3rio da pasta de projeto como argumento, ignorando as pastas default (`DEFAULT_IGNORE`) em conjunto com a pasta \"node_modules\", voc\u00ea pode obter uma lista de arquivos Python existentes na estrutura de pastas desse diret\u00f3rio. Voc\u00ea poderia chamar essa fun\u00e7\u00e3o assim: `traverse_files(project_path=\"/path/to/project\", ignore_dirs=[\"node_modules\"])`",
+          "line_number": 15,
+          "num_lines": 15,
+          "calls": 1,
+          "called_in": [
+            "./src/pydocgen/cli.py"
+          ]
+        }
+      }
+    }
+  }
+}

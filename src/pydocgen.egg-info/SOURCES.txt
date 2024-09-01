@@ -1,0 +1,7 @@
+README.md
+setup.py
+src/pydocgen.egg-info/PKG-INFO
+src/pydocgen.egg-info/SOURCES.txt
+src/pydocgen.egg-info/dependency_links.txt
+src/pydocgen.egg-info/entry_points.txt
+src/pydocgen.egg-info/top_level.txt
